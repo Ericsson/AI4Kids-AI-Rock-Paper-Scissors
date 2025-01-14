@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Folders to ignore
+/.idea/*
+/__pycache__/*
+# Data folder
+/Experiments/Training_Pipelines/RPS_v1_data
+
+# Files to ignore
+*.pyc
+.directory
+tes*
+
+
