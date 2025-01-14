@@ -1,6 +1,4 @@
 # AI4Kids-AI-Rock-Paper-Scissors
-=======
-# Rock, Paper, Scissors Game
 
 ## Overview
 
