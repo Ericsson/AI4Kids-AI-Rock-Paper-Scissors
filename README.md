@@ -112,4 +112,3 @@ Developed using Python 3.9.0. Detailed setup steps are available in the Document
 ## License
 
 This project is licensed under the MIT License.
->>>>>>> development
