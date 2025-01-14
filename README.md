@@ -10,12 +10,12 @@ The game pipeline consists of two main steps:
 
 This project highlights how computer vision and machine learning techniques enable machines to understand and respond to human gestures.
 
----
+
 
 ## Game Demo
 ![Pipeline Overview](Documentation/RPS_Demo.gif)
 
----
+
 
 ## Hand Detection Pipeline
 
@@ -42,13 +42,13 @@ A supervised learning approach is used to classify hand gestures (rock, paper, s
 ### **5. Label Prediction**  
 Real-time hand gesture predictions are made using the trained model. The game outcome is determined based on the predicted gesture and a computer-generated random choice.
 
----
+
 
 ## Game Logic and Image Display
 
 The game logic is implemented in Python, and OpenCV handles image display. Due to OpenCV's limitations with certain special characters (e.g., French accents), text images are generated using the Text to Image module from the Pillow (PIL) library. These images are displayed with transparent backgrounds for seamless integration.
 
----
+
 
 ## Supported Languages
 - English
@@ -56,7 +56,7 @@ The game logic is implemented in Python, and OpenCV handles image display. Due t
 
 Languages can be selected in-game.
 
----
+
 
 ## Machine Learning Training Pipeline and Datasets
 
@@ -70,7 +70,7 @@ Languages can be selected in-game.
 ### **Machine Learning Pipeline:**  
 The gesture detection process uses key point coordinates and the Random Forest algorithm for classification. The Decision Tree algorithm was evaluated but yielded lower accuracy and F1 scores.
 
----
+
 
 ## Program Files and Folders
 
@@ -84,13 +84,13 @@ The gesture detection process uses key point coordinates and the Random Forest a
 - **`Images` Folder:** Contains game images (non-language specific). Language-ready images can be generated using functions in the `Experiments` folder.  
 - **`main.py`:** Activates OpenCV and manages game logic.
 
----
+
 
 ## Dependencies
 
 Developed using Python 3.9.0. Detailed setup steps are available in the Documentation section.
 
----
+
 
 ## Contributors
 
@@ -99,7 +99,7 @@ Developed using Python 3.9.0. Detailed setup steps are available in the Document
 - Marie Nashed [LinkedIn](https://www.linkedin.com/in/marie-n-0ba014245/) | [GitHub](https://github.com/MarieNashed)  
 - Bhagya Chembakottu [LinkedIn](https://www.linkedin.com/in/bhagya-c/) | [GitHub](https://github.com/BhagyaC)  
 
----
+
 
 ## To-Do List
 
