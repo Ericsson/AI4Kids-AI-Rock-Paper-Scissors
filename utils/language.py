@@ -18,6 +18,8 @@ def resource_path(relative_path):
 
 class UsedLanguage(object):
     def __init__(self):
+        # Default FONT, path is updated if PyInstaller binary is used
+        self.embeded_font = resource_path('./utils/Roboto-VariableFont_wdth,wght.ttf')
 
         self = EnglishLanguage()
         self.language_in_game = self.create_text_image('./Images/languages/instr_in_game.png',
@@ -26,8 +28,7 @@ class UsedLanguage(object):
         self.countdown_number_2 = self.create_number_image(path='./Images/2.png', number_str='2')
         self.countdown_number_3 = self.create_number_image(path='./Images/3.png', number_str='3')
 
-    def create_text_image(self, path, text, font_path="arial.ttf", font_size=50,
-                          font_color=(166, 202, 240), bg_color=None):
+    def create_text_image(self, path, text, font_path=None, font_size=50, font_color=(166, 202, 240), bg_color=None):
         """
         Create an image containg a text
         :param path: path where the image will be saved
@@ -38,6 +39,9 @@ class UsedLanguage(object):
         :param bg_color: background color
         :return: image path
         """
+
+        if not font_path:
+            font_path = self.embeded_font
 
         # Load the font
         font = ImageFont.truetype(font_path, font_size)
@@ -74,7 +78,7 @@ class UsedLanguage(object):
 
         return path
 
-    def create_button(self, path, text, button_size=(400, 200), font_path="arial.ttf", font_size=80,
+    def create_button(self, path, text, button_size=(400, 200), font_path=None, font_size=80,
                       font_color=(0, 0, 0), button_color=(166, 202, 240)):
         """
         Create the button as image
@@ -93,6 +97,9 @@ class UsedLanguage(object):
         # Create a Draw object
         draw = ImageDraw.Draw(img)
 
+        if not font_path:
+            font_path = self.embeded_font
+
         # Load font
         font = ImageFont.truetype(font_path, font_size)
 
@@ -105,7 +112,7 @@ class UsedLanguage(object):
 
         return path
 
-    def create_number_image(self, path, number_str, font_path='arial.ttf', font_size=150, image_size=(200, 200)):
+    def create_number_image(self, path, number_str, font_path=None, font_size=150, image_size=(200, 200)):
         """
         Creates an image of a number as a string with a transparent background.
 
@@ -125,6 +132,9 @@ class UsedLanguage(object):
         # Create a new drawing context.
         draw = ImageDraw.Draw(image)
 
+        if not font_path:
+            font_path = self.embeded_font
+
         # Load the font.
         font = ImageFont.truetype(font_path, font_size)
 
@@ -140,13 +150,16 @@ class UsedLanguage(object):
 
         return path
 
-    def create_instructions(self, path, instructions_text, font_path='arial.ttf', font_size=45,
+    def create_instructions(self, path, instructions_text, font_path=None, font_size=45,
                             background_color=(255, 255, 255), font_color=(166, 202, 240)):
         # Create an Image object
         img = Image.new("RGBA", (1000, 1000), background_color)
 
         # Create a Draw object
         draw = ImageDraw.Draw(img)
+
+        if not font_path:
+            font_path = self.embeded_font
 
         # Load font
         font = ImageFont.truetype(font_path, font_size)
