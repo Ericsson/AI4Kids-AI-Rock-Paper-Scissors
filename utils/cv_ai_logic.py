@@ -10,10 +10,11 @@ import sys
 
 def resource_path(relative_path):
     """ Get the absolute path to the resource, works for dev and for PyInstaller """
-    try:
+    if getattr(sys, 'frozen', False):  # Running as PyInstaller executable
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
-    except Exception:
+        print('Running from PyInstaller binary')
+    else:
         base_path = os.path.abspath(".")
 
     return os.path.normpath(os.path.join(base_path, relative_path))
@@ -27,7 +28,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 # Loading model from disk
 # Model is trained on Random forest classifier with z score normalisation of data
-with open(resource_path(r'.\utils\model_random_forest_z_score.pkl'), 'rb') as input:
+with open(resource_path('./utils/model_random_forest_z_score.pkl'), 'rb') as input:
     clf = pickle.load(input)
 
 bg = None
