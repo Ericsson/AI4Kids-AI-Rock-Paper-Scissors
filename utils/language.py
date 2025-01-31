@@ -7,10 +7,11 @@ import sys
 
 def resource_path(relative_path):
     """ Get the absolute path to the resource, works for dev and for PyInstaller """
-    try:
+    if getattr(sys, 'frozen', False):  # Running as PyInstaller executable
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
-    except Exception:
+        print('Running from PyInstaller binary')
+    else:
         base_path = os.path.abspath(".")
 
     return os.path.normpath(os.path.join(base_path, relative_path))
@@ -21,7 +22,6 @@ class UsedLanguage(object):
         # Default FONT, path is updated if PyInstaller binary is used
         self.embeded_font = resource_path('./utils/Roboto-VariableFont_wdth,wght.ttf')
 
-        self = EnglishLanguage()
         self.language_in_game = self.create_text_image('./Images/languages/instr_in_game.png',
                                                        "Press 1 for English / Appuyez sur 2 pour le français")
         self.countdown_number_1 = self.create_number_image(path='./Images/1.png', number_str='1')
@@ -71,6 +71,8 @@ class UsedLanguage(object):
 
             # Set the image variable to the background image
             image = bg_image
+
+        # Update Path so it works with PyInstaller binary
         path = resource_path(path)
 
         # Save image to file
@@ -108,6 +110,9 @@ class UsedLanguage(object):
         text_x = (button_size[0] - text_size[0]) // 2
         text_y = (button_size[1] - text_size[1]) // 2
         draw.text((text_x, text_y), text, font=font, fill=font_color)
+
+        # Update Path so it works with PyInstaller binary
+        path = resource_path(path)
         img.save(path, format='PNG', transparent=True)
 
         return path
@@ -146,6 +151,8 @@ class UsedLanguage(object):
         # Draw the number on the image.
         draw.text((x, y), number_str, font=font, fill=(166, 202, 240, 255))
 
+        # Update Path so it works with PyInstaller binary
+        path = resource_path(path)
         image.save(path)
 
         return path
@@ -175,6 +182,8 @@ class UsedLanguage(object):
             draw.text((x, y), line, font=font, fill=font_color)
             y += text_size[1] + 20
 
+        # Update Path so it works with PyInstaller binary
+        path = resource_path(path)
         img.save(path, format='PNG', transparent=True)
 
         return path
@@ -182,7 +191,7 @@ class UsedLanguage(object):
 
 class FrenchLanguage(UsedLanguage):
     def __init__(self):
-        # super().__init__()
+        super().__init__()
         self.computer_win_img = self.create_text_image("./Images/languages/french/computer_win.png", "Vous perdez!")
         self.player_win_img = self.create_text_image("./Images/languages/french/player_win.png", "Vous gagnez!")
         self.tie_img = self.create_text_image("./Images/languages/french/tie.png", "Égalité")
@@ -217,7 +226,7 @@ class FrenchLanguage(UsedLanguage):
 
 class EnglishLanguage(UsedLanguage):
     def __init__(self):
-        # super().__init__()
+        super().__init__()
         self.computer_win_img = self.create_text_image("./Images/languages/english/computer_win.png", "Computer wins!")
         self.player_win_img = self.create_text_image("./Images/languages/english/player_win.png", "Player wins!")
         self.tie_img = self.create_text_image("./Images/languages/english/tie.png", "Tie")
@@ -241,7 +250,7 @@ class EnglishLanguage(UsedLanguage):
                 2. Make sure system detects your hand 
                 3. During count down keep yours hands steady
                 """
-        self.game_instr_img = self.create_instructions(path="./Images/languages/french/game_instructions.png",
+        self.game_instr_img = self.create_instructions(path="./Images/languages/english/game_instructions.png",
                                                        instructions_text=instructions_eng,
                                                        background_color=(0, 0, 0, 0),
                                                        font_color=(166, 202, 240))
