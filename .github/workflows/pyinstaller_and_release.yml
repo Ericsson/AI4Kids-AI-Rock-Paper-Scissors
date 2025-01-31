@@ -1,9 +1,9 @@
-name: Build PyInstaller Executable
+name: github.event_name == 'release'
 
 on:
-  push:
-    branches:
-      - main
+  #push:
+  #  branches:
+  #    - main
   release:
     types: [created]
 
