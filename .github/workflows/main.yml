@@ -39,14 +39,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-binary
-          path: dist/your_script.exe
+          path: dist/AI4Kids-AI-Rock-Paper-Scissors.exe
 
       - name: Upload Artifact (Linux)
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v4
         with:
           name: linux-binary
-          path: dist/your_script
+          path: dist/AI4Kids-AI-Rock-Paper-Scissors
 
   release:
     needs: build  # Waits for the build job to finish
@@ -70,5 +70,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/your_script.exe
-            dist/your_script
+            dist/AI4Kids-AI-Rock-Paper-Scissors.exe
+            dist/AI4Kids-AI-Rock-Paper-Scissors
