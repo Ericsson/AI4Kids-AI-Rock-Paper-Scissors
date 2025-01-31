@@ -1,12 +1,17 @@
 import cv2
 from utils.language import UsedLanguage, FrenchLanguage, EnglishLanguage, change_language
-import numpy as np
 import os
 import sys
 
+# TODO: Repeated in main CHECK
 usedlanguages = UsedLanguage()
 englishlanguage = EnglishLanguage()
 frenchlanguages = FrenchLanguage()
+
+
+# TODO: Repeated in main CHECK
+# Default Language selection
+change_language(usedlanguages, englishlanguage)
 
 # A 'Play' button class
 def resource_path(relative_path):
