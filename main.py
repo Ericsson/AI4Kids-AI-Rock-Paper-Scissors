@@ -11,7 +11,8 @@ usedlanguages = UsedLanguage()
 englishlanguage = EnglishLanguage()
 frenchlanguages = FrenchLanguage()
 
-# Language selection
+
+# Default Language selection
 change_language(usedlanguages, englishlanguage)
 
 # Play game setting
