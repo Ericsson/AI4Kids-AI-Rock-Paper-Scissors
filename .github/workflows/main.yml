@@ -1,4 +1,4 @@
-name: github.event_name == 'release'
+name: Build PyInstaller Executable
 
 on:
   push:
