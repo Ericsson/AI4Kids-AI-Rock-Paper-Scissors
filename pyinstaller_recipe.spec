@@ -8,8 +8,6 @@ def get_mediapipe_path():
     mediapipe_path = mediapipe.__path__[0]
     return mediapipe_path
 
-
-
 a = Analysis(
     ['main.py'],
     pathex=[],
@@ -34,27 +32,23 @@ a.binaries = filter(lambda x: 'mediapipe' not in x[0], a.binaries)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
-    name='main',
+    name='AI4Kids-AI-Rock-Paper-Scissors',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
-    console=False,
+    upx=False,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon="icon.ico"
 )
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name='main',
-)
+
+
