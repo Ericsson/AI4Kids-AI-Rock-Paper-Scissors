@@ -1,6 +1,7 @@
 name: Build PyInstaller Executable
 
 on:
+  workflow_dispatch:  # Allows manual triggering
   push:
    branches:
      - main
@@ -92,6 +93,7 @@ jobs:
           path: dist/
 
       - name: Upload Release Asset
+        if: github.event_name == 'release'  # Only trigger on tagged releases
         uses: softprops/action-gh-release@v2
         with:
           files: |
@@ -100,6 +102,7 @@ jobs:
             dist/AI4Kids-Rock-Paper-Scissors-macos.bin
 
       - name: Upload "Latest" Build
+        if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
